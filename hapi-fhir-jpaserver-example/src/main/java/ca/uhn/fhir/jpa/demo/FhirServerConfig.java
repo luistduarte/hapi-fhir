@@ -45,7 +45,7 @@ public class FhirServerConfig extends BaseJavaConfigDstu2 {
 	/**
 	 * The following bean configures the database connection. The 'url' property value of "jdbc:derby:directory:jpaserver_derby_files;create=true" indicates that the server should save resources in a
 	 * directory called "jpaserver_derby_files".
-	 * 
+	 *
 	 * A URL to a remote database could also be placed here, along with login credentials and other properties supported by BasicDataSource.
 	 */
 	@Bean(destroyMethod = "close")
@@ -110,8 +110,11 @@ public class FhirServerConfig extends BaseJavaConfigDstu2 {
 
 	@Bean(autowire = Autowire.BY_TYPE)
 	public IServerInterceptor subscriptionSecurityInterceptor() {
-		SubscriptionsRequireManualActivationInterceptorDstu2 retVal = new SubscriptionsRequireManualActivationInterceptorDstu2();
-		return retVal;
+		//SubscriptionsRequireManualActivationInterceptorDstu2 retVal = new SubscriptionsRequireManualActivationInterceptorDstu2();
+		//return retVal;
+		BasicSecurityInterceptor inter = new BasicSecurityInterceptor();
+		return inter;
+
 	}
 
 	@Bean()
